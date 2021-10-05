@@ -1,0 +1,33 @@
+﻿@page
+@*@model StavebnyDennik.Pages.ProjectsModel*@
+@{
+
+    ViewData["Title"] = "Projects";
+    @functions {
+
+        public string Message { get; set; }
+
+        public void OnGet([FromQuery] string? id_token)
+        {
+            Message = "Get used";
+            if (HttpContext.Request.Query.Any())
+            {
+
+            }
+        }
+
+        public ActionResult OnPost()
+        {
+            Message = "Post used";
+            return Redirect("https://localhost:6001/connect/authorize?client_id=StavebnyDennikZaloha&scope=openid&redirect_uri=https%3A%2F%2Flocalhost%3A5001%2Fprojects&response_type=id_token&nonce=dfsdgsdvreter");
+        }
+    }
+}
+<h1>@ViewData["Title"]</h1>
+<h3>@Message</h3>
+
+<p>Toto je stránka na prepojenie s platformou. (OLD - len záloha)</p>
+
+<form method="post">
+    <button class="btn btn-success">Prepoj s platformou</button>
+</form>

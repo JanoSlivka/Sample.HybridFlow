@@ -1,0 +1,41 @@
+﻿@page
+@model StavebnyDennik.Pages.Projects2Model
+@{
+
+    ViewData["Title"] = "Projects2";
+    @functions {
+
+
+    }
+}
+<h1>@ViewData["Title"]</h1>
+<h3>@Model.Message</h3>
+
+<p>Toto je stránka na prepojenie s platformou. (Hybrid flow + Refresh token)</p>
+
+@if (@Model.IsButtonVisible)
+{
+    <form method="post">
+        <button class="btn btn-success">Prepoj s platformou</button>
+    </form>
+}
+else
+{
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Owner</th>
+        </tr>
+        @foreach (Project project in Model.Projects)
+        {
+            <tr>
+                <td>@project.Id</td>
+                <td>@project.Name</td>
+                <td>@project.Description</td>
+                <td>@project.Owner</td>
+            </tr>
+        }
+    </table>
+}
